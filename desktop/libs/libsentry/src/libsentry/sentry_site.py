@@ -18,7 +18,6 @@
 import errno
 import logging
 import os.path
-import random
 
 from django.utils.translation import ugettext as _
 
@@ -98,14 +97,16 @@ def is_ha_enabled():
   return get_sentry_server_rpc_addresses() is not None
 
 
-def get_sentry_client(username, client_class, exempt_host=None, component=None):
+def get_sentry_client(username, client_class, exempt_host=None, component=None, retries=0):
   server = None
+
   if is_ha_enabled():
     servers = _get_server_properties(exempt_host=exempt_host)
-    if servers:
-      server = random.choice(servers)
-
-  if server is None:
+    if servers and len(servers) <= retries:
+      server = servers[retries]
+    else:
+      raise PopupException(_('Tried %s Sentry servers HA, none are available.') % retries)
+  else:
     if HOSTNAME.get() and PORT.get():
       LOG.info('No Sentry servers configured in %s, falling back to libsentry configured host: %s:%s' %
                (_CONF_SENTRY_SERVER_RPC_ADDRESSES, HOSTNAME.get(), PORT.get()))
