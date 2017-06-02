@@ -1,5 +1,5 @@
 # Welcome to the official Hue (http://gethue.com) developer Dockerfile
-FROM centos:centos7
+#FROM centos:centos7
 
 MAINTAINER The Hue Team "http://git.intra.weibo.com/recommend/hue.git"
 
@@ -28,8 +28,8 @@ openssl-devel \
 RUN yum -y install git make
 
 # Install hue
-RUN git clone http://git.intra.weibo.com/recommend/hue.git
-WORKDIR hue
+RUN git clone http://git.intra.weibo.com/recommend/hue.git /data1/hue
+WORKDIR /data1/hue
 
 # make hue
 RUN make apps
