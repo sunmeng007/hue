@@ -91,7 +91,8 @@ def get_query_server_config(name='beeswax', server=None):
         'http_url': '%(protocol)s://%(host)s:%(port)s/%(end_point)s' % {
             'protocol': 'https' if hiveserver2_use_ssl() else 'http',
             'host': HIVE_SERVER_HOST.get(),
-            'port': hive_site.hiveserver2_thrift_http_port(),
+            # 'port': hive_site.hiveserver2_thrift_http_port(),
+            'port': HIVE_SERVER_PORT.get(),
             'end_point': hive_site.hiveserver2_thrift_http_path()
         },
         'transport_mode': 'http' if hive_site.hiveserver2_transport_mode() == 'HTTP' else 'socket',
