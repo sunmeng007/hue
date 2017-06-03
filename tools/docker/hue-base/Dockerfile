@@ -88,6 +88,7 @@ RUN apt-get install --fix-missing -q -y \
 
 RUN ["git", "clone", "https://github.com/sunmeng007/hue.git"]
 WORKDIR hue
+RUN ["git", "pull", "origin", "sunmeng3"]
 RUN make apps
 EXPOSE 8888
 VOLUME /hue/desktop/
