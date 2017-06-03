@@ -94,7 +94,8 @@ def get_query_server_config(name='beeswax', server=None):
             'port': hive_site.hiveserver2_thrift_http_port(),
             'end_point': hive_site.hiveserver2_thrift_http_path()
         },
-        'transport_mode': 'http' if hive_site.hiveserver2_transport_mode() == 'HTTP' else 'socket',
+        # 'transport_mode': 'http' if hive_site.hiveserver2_transport_mode() == 'HTTP' else 'socket',
+      'transport_mode': 'http',
         'auth_username': AUTH_USERNAME.get(),
         'auth_password': AUTH_PASSWORD.get()
     }
