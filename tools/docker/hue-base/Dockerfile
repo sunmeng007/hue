@@ -86,7 +86,7 @@ RUN apt-get install --fix-missing -q -y \
   libgmp3-dev \
   libz-dev
 
-RUN git clone https://github.com/sunmeng007/hue.git
+RUN ["git", "clone", "https://github.com/sunmeng007/hue.git"]
 WORKDIR hue
 RUN make apps
 EXPOSE 8888
