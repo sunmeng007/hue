@@ -161,7 +161,7 @@ def hiveserver2_transport_mode():
   return get_conf().get(_CNF_HIVESERVER2_TRANSPORT_MODE, 'TCP').upper()
 
 def hiveserver2_thrift_http_port():
-  return get_conf().get(_CNF_HIVESERVER2_THRIFT_HTTP_PORT, '10001')
+  return get_conf().get(_CNF_HIVESERVER2_THRIFT_HTTP_PORT, '10000')
 
 def hiveserver2_thrift_http_path():
   return get_conf().get(_CNF_HIVESERVER2_THRIFT_HTTP_PATH, 'cliservice')
