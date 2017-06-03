@@ -86,7 +86,7 @@ RUN apt-get install --fix-missing -q -y \
   libgmp3-dev \
   libz-dev
 
-RUN git clone https://github.com/cloudera/hue.git
+RUN git clone http://git.intra.weibo.com/recommend/hue.git
 WORKDIR hue
 RUN make apps
 EXPOSE 8888
